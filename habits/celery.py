@@ -4,8 +4,7 @@ from celery import Celery
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'habits.settings')
 
-app = Celery('habits')
+app = Celery('habits', include=['habits.tasks'])
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
-app.autodiscover_tasks()
